@@ -1,0 +1,22 @@
+image: maven:4.0.0-jdk-19
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - echo "Building the project..."
+    - mvn compile
+  only:
+    - merge_requests
+
+
+test:
+  stage: test
+  script:
+    - echo "Running the tests..."
+    - mvn test
+  only:
+    - merge_requests
